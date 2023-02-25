@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:makeathon/category.dart';
 import 'package:makeathon/fav.dart';
 import 'package:makeathon/home.dart';
 import 'package:makeathon/login.dart';
@@ -296,10 +297,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //       builder: (context) => const CulturalFiltersScreen(onSelectionChanged: (List<String> ) {  }, selectedCultures: [],)),
-                        // );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const Categories()),
+                        );
                       },
                       child: Column(
                         children: [

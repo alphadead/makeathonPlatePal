@@ -16,8 +16,10 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
     final CollectionReference recipesRef =
         FirebaseFirestore.instance.collection('recipes');
 
-    QuerySnapshot querySnapshot =
-        await recipesRef.where('name', isGreaterThanOrEqualTo: query).get();
+    QuerySnapshot querySnapshot = await recipesRef
+        .where('name', isGreaterThanOrEqualTo: query)
+        .where('name', isLessThan: '${query}z')
+        .get();
 
     setState(() {
       _searchResults = querySnapshot.docs;
