@@ -57,7 +57,7 @@ class _AllergyFiltersScreenState extends State<AllergyFiltersScreen> {
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: SizedBox(
-              height: 500,
+              height: 800,
               child: ListView.builder(
                   itemCount: listofallergen.length,
                   itemBuilder: (context, index) {

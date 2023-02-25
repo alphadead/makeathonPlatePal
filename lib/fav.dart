@@ -58,8 +58,17 @@ class _FavPageState extends State<FavPage> {
                 DocumentSnapshot recipe = snapshot.data!.docs[index];
 
                 return ListTile(
-                  title: Text(recipe['name']),
-                  onTap: () {},
+                  title: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: NetworkImage(recipe['image_url']))),
+                    clipBehavior: Clip.hardEdge,
+                    child: Image.network(recipe['image_url']),
+                  ),
+                  subtitle: Text(recipe['name']),
                 );
               }
               return const SizedBox.shrink();
