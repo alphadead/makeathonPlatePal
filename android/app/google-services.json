@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "461198826965",
+    "project_id": "mealm-b900f",
+    "storage_bucket": "mealm-b900f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461198826965:android:2cc4c83ce0b59d9ba2f15c",
+        "android_client_info": {
+          "package_name": "com.example.makeathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461198826965-29kkivohjqvi3c43l27ucnt15n251jv5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUBAqvlp28Dl-jy0GP1NsCJOOt85-KdHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "461198826965-29kkivohjqvi3c43l27ucnt15n251jv5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
