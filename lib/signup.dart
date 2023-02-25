@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:makeathon/auth_functions.dart';
-import 'package:makeathon/home.dart';
+import 'package:makeathon/dashboard.dart';
 import 'package:makeathon/login.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -15,6 +15,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _allergenController = TextEditingController();
+  final TextEditingController _dishController = TextEditingController();
   final String _type = 'Innovator';
 
   @override
@@ -28,19 +30,14 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           width: double.infinity,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Flexible(
-              flex: 2,
-              child: Container(),
-            ),
-
             const SizedBox(
-              height: 44,
+              height: 80,
             ),
 
             //username textfield
@@ -86,6 +83,25 @@ class _SignUpPageState extends State<SignUpPage> {
             const SizedBox(
               height: 24,
             ),
+            InputTextField(
+              hintText: 'Enter your Allergens',
+              textInputType: TextInputType.text,
+              textEditingController: _allergenController,
+            ),
+
+            const SizedBox(
+              height: 24,
+            ),
+
+            InputTextField(
+              hintText: 'Enter your Favorite Dish',
+              textInputType: TextInputType.text,
+              textEditingController: _dishController,
+            ),
+
+            const SizedBox(
+              height: 24,
+            ),
 
             // DropdownButtonFormField(
             //     items: const [
@@ -105,11 +121,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   username: _usernameController.text,
                   type: _type,
                   age: _ageController.text,
-                  //allergens: _allergens,
+                  allergens: _allergenController.text,
+                  favDish: _dishController.text,
                 );
                 if (res == 'success') {
                   Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => DashboardScreen()),
                       (Route<dynamic> route) => false);
                 }
               },
@@ -129,10 +147,6 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             const SizedBox(
               height: 22,
-            ),
-            Flexible(
-              flex: 2,
-              child: Container(),
             ),
 
             Row(

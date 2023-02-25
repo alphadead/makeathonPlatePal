@@ -22,7 +22,8 @@ class AuthMethods {
     required String username,
     required String type,
     required String age,
-    //required List<String> allergens,
+    required String allergens,
+    required String favDish,
   }) async {
     String res = "Some error occured";
     try {
@@ -35,14 +36,15 @@ class AuthMethods {
             email: email, password: password);
 
         //add user to our database
-
+        List allergy = [allergens];
+        List fav = [favDish];
         Map<String, dynamic> user = {
           'name': username,
           'uid': cred.user!.uid,
           'email': email,
           'age': age,
-          'favoriteDishes': type,
-          //'allergens': allergens.isEmpty ? [''] : allergens,
+          'allergens': allergy,
+          'favoriteDishes': fav,
         };
 
         await _firestore.collection('users').doc(cred.user!.uid).set(user);

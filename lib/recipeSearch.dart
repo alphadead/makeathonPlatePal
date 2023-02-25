@@ -34,22 +34,28 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
             hintText: 'Search for recipes',
             hintStyle: TextStyle(color: Colors.white),
             border: InputBorder.none,
+            labelStyle: TextStyle(color: Colors.white),
+            prefixStyle: TextStyle(color: Colors.white),
+            suffixStyle: TextStyle(color: Colors.white),
           ),
           onSubmitted: _searchRecipes,
         ),
         actions: [
-          InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AllergyFiltersScreen(
-                      selectedAllergens: ['milk'],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+            child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AllergyFiltersScreen(
+                        selectedAllergens: ['milk'],
+                      ),
                     ),
-                  ),
-                );
-              },
-              child: const Icon(Icons.sort))
+                  );
+                },
+                child: const Icon(Icons.sort)),
+          )
         ],
       ),
       body: ListView.builder(

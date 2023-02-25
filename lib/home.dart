@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:makeathon/dashboard.dart';
 import 'package:makeathon/recepieDetail.dart';
 import 'package:makeathon/recipeSearch.dart';
 
@@ -26,18 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       appBar: AppBar(
         title: const Text('Popular Recipes'),
-        actions: [
-          InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DashboardScreen(),
-                  ),
-                );
-              },
-              child: const Icon(Icons.person))
-        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('recipes').snapshots(),

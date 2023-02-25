@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:makeathon/auth_functions.dart';
-import 'package:makeathon/home.dart';
+import 'package:makeathon/dashboard.dart';
 import 'package:makeathon/signup.dart';
 
 class LoginPage extends StatefulWidget {
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text, password: _passwordController.text);
     if (res == 'success') {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => DashboardScreen()),
           (Route<dynamic> route) => false);
       // Navigator.of(context)
       //     .push(MaterialPageRoute(builder: (context) => HomeScreen()));

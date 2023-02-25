@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RecipeDetailsScreen extends StatefulWidget {
@@ -12,6 +13,9 @@ class RecipeDetailsScreen extends StatefulWidget {
 
 class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
   late Stream<DocumentSnapshot> _recipeStream;
+  String id = FirebaseAuth.instance.currentUser!.uid;
+  bool isFav = false;
+  List isAdd = [];
 
   @override
   void initState() {
@@ -24,9 +28,30 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
         .snapshots();
   }
 
+  toggle(String recipeid) {
+    setState(() {
+      isFav = !isFav;
+    });
+    isAdd.add(recipeid);
+    if (isFav) {
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(id)
+          .update({'fav': FieldValue.arrayUnion(isAdd)});
+    } else {
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(id)
+          .update({'fav': FieldValue.arrayRemove(isAdd)});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => toggle(widget.recipeId),
+          child: Icon(isFav ? Icons.star : Icons.star_border)),
       appBar: AppBar(
         title: const Text('Recipe Details'),
       ),
