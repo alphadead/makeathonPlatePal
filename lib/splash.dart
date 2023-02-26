@@ -14,18 +14,19 @@ class _SplashState extends State<Splash> {
     // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const LoginPage()),
+          (Route<dynamic> route) => false);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(220, 227, 253, 1),
+      backgroundColor: Colors.white,
       body: Center(
           child: Image.asset(
-        'assets/login.gif',
+        'assets/splash.gif',
         fit: BoxFit.fill,
       )),
     );

@@ -41,34 +41,54 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               DocumentSnapshot recipe = snapshot.data!.docs[index];
-              return Card(
-                child: SizedBox(
-                  height: 80,
-                  child: ListTile(
-                    trailing: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: NetworkImage(recipe['image_url']))),
-                      clipBehavior: Clip.hardEdge,
-                      child: Image.network(recipe['image_url']),
-                    ),
-                    title: Text(recipe['name']),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RecipeDetailsScreen(
-                            recipeId: recipe.id.toString(),
+              return recipe['image_url'].toString() != 'null' ||
+                      recipe['image_url'] != null
+                  ? Card(
+                      child: SizedBox(
+                        height: 80,
+                        child: ListTile(
+                          trailing: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: NetworkImage(recipe['image_url']))),
+                            clipBehavior: Clip.hardEdge,
+                            child: Image.network(recipe['image_url']),
                           ),
+                          title: Text(recipe['name']),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecipeDetailsScreen(
+                                  recipeId: recipe.id.toString(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                ),
-              );
+                      ),
+                    )
+                  : Card(
+                      child: SizedBox(
+                        height: 80,
+                        child: ListTile(
+                          title: Text(recipe['name']),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecipeDetailsScreen(
+                                  recipeId: recipe.id.toString(),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    );
             },
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 180,

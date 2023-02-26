@@ -247,10 +247,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Text(
-                          'Your Favorite Dishes',
+                          'Your Favorite Dishes   ',
                           style: TextStyle(fontSize: 20.0),
                         ),
-                        Icon(Icons.favorite)
+                        Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
                       ],
                     ),
                   ),
