@@ -113,8 +113,8 @@ class _SignUpPageState extends State<SignUpPage> {
             //     }),
 
             //button
-            InkWell(
-              onTap: () async {
+            ElevatedButton(
+              onPressed: () async {
                 String res = await AuthMethods().SignupUser(
                   email: _emailController.text,
                   password: _passwordController.text,
@@ -154,7 +154,7 @@ class _SignUpPageState extends State<SignUpPage> {
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: const Text("Don't have an account?"),
+                  child: const Text("Already have an account?"),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -166,7 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: const Text(
-                      "Sign Up",
+                      "Login",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),

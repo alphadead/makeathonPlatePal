@@ -48,11 +48,15 @@ class _CategoriesState extends State<Categories> {
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.amber,
+                  color: Colors.blue,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
                   myProducts[index].toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20),
                 ),
               ),
             );

@@ -29,6 +29,17 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => const AddDish(),
+      //       ),
+      //     );
+      //   },
+      //   child: const Icon(Icons.add),
+      // ),
       appBar: AppBar(
         title: TextField(
           controller: _searchController,

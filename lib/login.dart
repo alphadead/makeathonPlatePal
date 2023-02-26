@@ -49,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -56,11 +57,16 @@ class _LoginPageState extends State<LoginPage> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Flexible(
-              flex: 2,
+              flex: 1,
               child: Container(),
             ),
-            //image
 
+            Image.asset('assets/login.gif'),
+            //image
+            Flexible(
+              flex: 1,
+              child: Container(),
+            ),
             //email textfield
             InputTextField(
               hintText: 'Enter your Email Address',
@@ -84,8 +90,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             //button
-            InkWell(
-              onTap: loginUser,
+            ElevatedButton(
+              onPressed: loginUser,
               child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
@@ -130,6 +136,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ],
+            ),
+            Flexible(
+              flex: 1,
+              child: Container(),
             ),
           ]),
         ),
