@@ -5,6 +5,13 @@ import 'package:makeathon/allergyFilter.dart';
 import 'package:makeathon/recepieDetail.dart';
 
 class RecipeSearchScreen extends StatefulWidget {
+  final bool? isGluten;
+  final bool? isVeg;
+  final bool? isLac;
+  final bool? isVegan;
+  const RecipeSearchScreen(
+      {this.isGluten, this.isLac, this.isVeg, this.isVegan});
+
   @override
   _RecipeSearchScreenState createState() => _RecipeSearchScreenState();
 }
@@ -20,6 +27,10 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
     QuerySnapshot querySnapshot = await recipesRef
         .where('name', isGreaterThanOrEqualTo: query)
         .where('name', isLessThan: '${query}z')
+        // .where('isGluten', isEqualTo: widget.isGluten)
+        // .where('isVeg', isEqualTo: widget.isVeg)
+        // .where('isVegan', isEqualTo: widget.isVegan)
+        // .where('isLac', isEqualTo: widget.isLac)
         .get();
 
     setState(() {
